@@ -77,3 +77,11 @@ BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_PLUGIN_VALIDATION := soong-llvm18 soong-llvm21 soong-llvm22
 BUILD_BROKEN_SRC_DIR_RW_ALLOWLIST += $(abspath prebuilts/mesa-tools)
+
+# Waydroid still uses the legacy gralloc (minigbm, HIDL IMapper passthrough).
+# Android 17 drops gralloc 2/3 in GraphicBufferMapper unless LEGACY_GRALLOC
+# is set; without it hwcomposer aborts with "gralloc-mapper is missing" and
+# the container never reaches boot_completed.
+SOONG_CONFIG_NAMESPACES += libui
+SOONG_CONFIG_libui += legacy_gralloc
+SOONG_CONFIG_libui_legacy_gralloc := true
