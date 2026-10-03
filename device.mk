@@ -71,6 +71,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
+# Emulated cameras next to the host's webcams, so that camera apps still
+# have a camera to open on hosts without one.
+PRODUCT_SOONG_NAMESPACES += hardware/google/camera/devices/EmulatedCamera
+PRODUCT_PACKAGES += \
+    com.google.emulated.camera.provider.hal
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
