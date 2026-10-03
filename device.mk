@@ -283,6 +283,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.power-service.example
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # Sensors
 PRODUCT_PACKAGES += \
     com.android.hardware.sensors
