@@ -85,3 +85,4 @@ BUILD_BROKEN_SRC_DIR_RW_ALLOWLIST += $(abspath prebuilts/mesa-tools)
 SOONG_CONFIG_NAMESPACES += libui
 SOONG_CONFIG_libui += legacy_gralloc
 SOONG_CONFIG_libui_legacy_gralloc := true
+SOONG_CONFIG_TYPE_libui_legacy_gralloc := bool
