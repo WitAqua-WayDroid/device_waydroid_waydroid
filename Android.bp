@@ -1,2 +1,18 @@
 soong_namespace {
 }
+
+// Declares the libui Soong config namespace so the bool variable
+// legacy_gralloc (set in BoardConfig.mk) type-checks in
+// frameworks/native/libs/ui/Android.bp. Without this, Soong treats the
+// variable as a string and rejects the bool branch in the select.
+soong_config_module_type {
+    name: "libui_cc_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "libui",
+    bool_variables: [
+        "legacy_gralloc",
+    ],
+    properties: [
+        "cflags",
+    ],
+}
